@@ -11,6 +11,7 @@ public class StudentAndClassroomVO {
     //班级的信息
     private String classid;
     private String classname;
+    private String ne1w;
 
     public String getId() {
         return id;
