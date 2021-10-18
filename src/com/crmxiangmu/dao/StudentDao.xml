@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crmxiangmu.dao.StudentDao">
+    <select id="getById" parameterType="java.lang.String" resultType="com.crmxiangmu.domain.Student">
+        select * from tbl_student where id=#{id}
+    </select>
+    <insert id="save" parameterType="com.crmxiangmu.domain.Student">
+        insert into tbl_student(id,name,age)values(#{id},#{name},#{age});
+    </insert>
+    <select id="getAll" resultType="com.crmxiangmu.domain.Student">
+        select * from tbl_student
+    </select>
+
+    <select id="select2" resultType="com.crmxiangmu.domain.Student">
+        select * from tbl_student where age=#{age}
+    </select>
+
+    <select id="select3" resultType="Map" >
+        select * from tbl_student
+     <where>
+         <if test="name!=null and name!=''">
+             and name like '%' #{name} '%'
+         </if>
+
+         <if test="age!=null and age!=''">
+             and age = 18
+         </if>
+     </where>
+
+    </select>
+
+    <select id="check" resultType="map" >
+        select r.name as classname,s.name  from tbl_student s join tbl_classroom r where r.id = s.classid
+
+
+    </select>
+</mapper>

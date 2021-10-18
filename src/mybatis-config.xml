@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="db.properties"></properties>
+    <!-- 配置的目的
+       为了更有效的查询数据库里面的数据
+       没啥效果   企业要求使用再使用
+
+        <settings>
+        <setting name="" value=""/>
+    </settings>
+    -->
+
+    <!--起别名    取完后可以使用com.crmxiangmu.domain.Student，也可以使用别名"s"-->
+    <typeAliases >
+        <typeAlias type="com.crmxiangmu.domain.Student" alias="s" />
+    </typeAliases>
+
+
+
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/crmxiangmu/dao/StudentDao.xml"/>
+    </mappers>
+</configuration>
